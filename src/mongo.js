@@ -58,7 +58,7 @@ const Note = mongoose.model("Note", noteSchema);
 // });
 
 // find without condition
-Note.find({ important: true }).then((result) => {
+Note.find().then((result) => {
   result.forEach((note) => {
     console.log(note);
   });
