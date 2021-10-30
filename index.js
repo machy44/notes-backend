@@ -59,14 +59,8 @@ app.put("/api/notes/:id", (request, response, next) => {
     .catch((error) => next(error));
 });
 
-app.post("/api/notes", (request, response) => {
+app.post("/api/notes", (request, response, next) => {
   const body = request.body;
-
-  if (body.content === undefined) {
-    return response.status(400).json({
-      error: "content missing",
-    });
-  }
 
   const note = new Note({
     content: body.content,
@@ -74,9 +68,12 @@ app.post("/api/notes", (request, response) => {
     date: new Date(),
   });
 
-  note.save().then((savedNote) => {
-    response.json(savedNote);
-  });
+  note
+    .save()
+    .then((savedNote) => {
+      response.json(savedNote);
+    })
+    .catch((error) => next(error));
 });
 
 app.use(middlewares.unknownEndpoint);
