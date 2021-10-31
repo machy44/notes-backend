@@ -1,8 +1,8 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 if (process.argv.length < 3) {
   console.log(
-    "Please provide the password as an argument: node mongo.js <password>"
+    'Please provide the password as an argument: node mongo.js <password>'
   );
   process.exit(1);
 }
@@ -20,7 +20,7 @@ const noteSchema = new mongoose.Schema({
 });
 
 // Mongoose automatically looks for the plural, lowercased version of your model name. I will be named notes collection in the database
-const Note = mongoose.model("Note", noteSchema);
+const Note = mongoose.model('Note', noteSchema);
 
 // since the objects are created with the model's constructor function, they have all the properties of the model,
 // which include methods for saving the object to the database

@@ -1,28 +1,28 @@
-const express = require("express");
-const cors = require("cors");
-require("dotenv").config();
+const express = require('express');
+const cors = require('cors');
+require('dotenv').config();
 
-const Note = require("./src/models/note");
-const middlewares = require("./src/middlewares");
+const Note = require('./src/models/note');
+const middlewares = require('./src/middlewares');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(express.static("build"));
+app.use(express.static('build'));
 
 app.use(middlewares.requestLogger);
 
-app.get("/", (request, response) => {
-  response.send("<h1>Hello World!</h1>"); // express automatically sets the value of the Content-Type header to be text/html
+app.get('/', (request, response) => {
+  response.send('<h1>Hello World!</h1>'); // express automatically sets the value of the Content-Type header to be text/html
 });
 
-app.get("/api/notes", (request, response) => {
+app.get('/api/notes', (request, response) => {
   Note.find().then((notes) => {
     response.json(notes);
   });
 });
 
-app.get("/api/notes/:id", (request, response, next) => {
+app.get('/api/notes/:id', (request, response, next) => {
   Note.findById(request.params.id)
     .then((note) => {
       if (note) {
@@ -36,15 +36,15 @@ app.get("/api/notes/:id", (request, response, next) => {
     });
 });
 
-app.delete("/api/notes/:id", (request, response, next) => {
+app.delete('/api/notes/:id', (request, response, next) => {
   Note.findByIdAndRemove(request.params.id)
-    .then((result) => {
+    .then(() => {
       response.status(204).end();
     })
     .catch((error) => next(error));
 });
 
-app.put("/api/notes/:id", (request, response, next) => {
+app.put('/api/notes/:id', (request, response, next) => {
   const body = request.body;
 
   const note = {
@@ -59,7 +59,7 @@ app.put("/api/notes/:id", (request, response, next) => {
     .catch((error) => next(error));
 });
 
-app.post("/api/notes", (request, response, next) => {
+app.post('/api/notes', (request, response, next) => {
   const body = request.body;
 
   const note = new Note({
