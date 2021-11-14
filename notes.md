@@ -23,3 +23,6 @@
 //   }
 // });
 ```
+
+
+Good to know about referencing in mongodb https://fullstackopen.com/en/part4/user_administration#references-across-collections
