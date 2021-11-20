@@ -5,7 +5,7 @@ const User = require('../models/user');
 // because of the express-async-errors you can eliminate try catch and dont need next(exception) anymore
 
 notesRouter.get('/', async (request, response) => {
-  const notes = await Note.find();
+  const notes = await Note.find().populate('user', { username: 1, name: 1 });
   response.json(notes);
 });
 
