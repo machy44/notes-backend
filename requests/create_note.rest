@@ -1,9 +1,10 @@
 POST http://localhost:3001/api/notes HTTP/1.1
 content-type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBlcm8iLCJpZCI6IjYxOWE5OTIxMWY5NzBjNGM4NTA0M2M3NyIsImlhdCI6MTYzNzUyMjI1OX0.KmOo9w2SdXJ85eUf4ncFxAZsJha3ob6MgBLAM8o-FYE
 
 {
-    "content": "User id of the note creator is at the start sent along the request",
+    "content": "create note bearer REST client",
     "important": true,
-    "userId": "6192deada4dc6b70383ba618"
+    "userId": "6192de56a4dc6b70383ba614"
 
 }
